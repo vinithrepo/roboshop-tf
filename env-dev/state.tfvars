@@ -1,3 +1,3 @@
-bucket         = "tf.state.test2"
+bucket         = "surya.s3"
 key            = "dev/state.tf"
 region         = "us-east-1"
