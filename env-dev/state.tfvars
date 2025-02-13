@@ -1,3 +1,3 @@
 bucket         = "tf.state.test"
-key            = "dev/state2.tf"
+key            = "dev/state.tf"
 region         = "us-east-1"
