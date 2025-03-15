@@ -20,6 +20,6 @@ vpc = {
   }
 }
 
-aws_default_vpc_id         = "vpc-0e20cdadef7a7f85a"
+default_vpc_id         = "vpc-0e20cdadef7a7f85a"
 default_vpc_cidr       = "172.31.0.0/16"
 default_route_table_id = "rtb-0129d82e0b740825f"
