@@ -13,6 +13,20 @@ module "vpc" {
   env                    = var.env
 }
 
+
+module "alb" {
+
+  source = "git::https://github.com/vinithrepo/tf-module-alb.git"
+
+  for_each = var.alb
+
+  tags                   = var.tags
+  internal               = each.value["internal"]
+  lb_type                = each.value["lb_type"]
+  env                    = var.env
+  sg_ingress_cidr        = each.value["sg_ingress_cidr"]
+}
+
 output "vpc" {
   value = module.vpc
 }
