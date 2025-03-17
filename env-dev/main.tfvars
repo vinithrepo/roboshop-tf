@@ -1,7 +1,6 @@
-
 vpc = {
   main = {
-    cidr = "10.0.0.0/16"
+    cidr    = "10.0.0.0/16"
     subnets = {
       public = {
         public1 = { cidr = "10.0.0.0/24", az = "us-east-1a" }
@@ -22,3 +21,11 @@ vpc = {
 default_vpc_id         = "vpc-0e20cdadef7a7f85a"
 default_vpc_cidr       = "172.31.0.0/16"
 default_route_table_id = "rtb-0129d82e0b740825f"
+env                    = "dev"
+tags                   = {
+  company        = "ABC Tech"
+  bussiness_unit = "Ecommerce"
+  Created_by     = "terraform"
+  project_name   = "robot shop"
+  cost_center    = "ecom_rs"
+}
