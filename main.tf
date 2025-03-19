@@ -25,6 +25,7 @@ module "alb" {
   lb_type                = each.value["lb_type"]
   env                    = var.env
   sg_ingress_cidr        = each.value["sg_ingress_cidr"]
+  vpc_id  = each.value["internal"] ? lookup(lookup(module.vpc, "vpc", null ), "vpc_id", null) : var.default_vpc_id
 }
 
 output "vpc" {
