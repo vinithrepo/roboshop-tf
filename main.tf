@@ -30,9 +30,9 @@ module "alb" {
   sg_port         = each.value["sg_port"]
 }
 
-module "alb" {
+module "docdb" {
 
-  source = "git::https://github.com/vinithrepo/tf-module-alb.git"
+  source = "git::https://github.com/vinithrepo/tf-module-docdb.git"
 
   tags            = var.tags
   env             = var.env
