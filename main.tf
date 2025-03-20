@@ -29,3 +29,16 @@ module "alb" {
   subnets         = each.value["internal"] ? local.app_subnets : data.aws_subnets.subnets.ids
   sg_port         = each.value["sg_port"]
 }
+
+module "alb" {
+
+  source = "git::https://github.com/vinithrepo/tf-module-alb.git"
+
+  tags            = var.tags
+  env             = var.env
+
+  for_each = var.docdb
+
+  subnet_ids         = local.db_subnets
+
+}
