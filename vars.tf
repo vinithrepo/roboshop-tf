@@ -6,5 +6,6 @@ variable "tags" {}
 variable "env" {}
 variable "alb" {}
 variable "docdb" {}
+variable "sg_ingress_cidr" {}
 
 
