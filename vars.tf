@@ -1,3 +1,4 @@
+# main.tfvars variables
 variable "vpc" {}
 variable "default_vpc_id" {}
 variable "default_vpc_cidr" {}
@@ -8,4 +9,6 @@ variable "alb" {}
 variable "docdb" {}
 variable "rds" {}
 variable "elasticache" {}
+variable "rabbitmq" {}
+variable "zone_id" {}
 
