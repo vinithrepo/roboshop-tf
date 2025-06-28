@@ -84,7 +84,7 @@ elasticache = {
 }
 rabbitmq = {
   main = {
-    shh_ingress_cidr = ["172.31.89.215"]
+    shh_ingress_cidr = ["172.31.89.215/32"]
     instance_type = "t3.small"
   }
 }
