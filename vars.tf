@@ -12,3 +12,4 @@ variable "elasticache" {}
 variable "rabbitmq" {}
 variable "zone_id" {}
 variable "shh_ingress_cidr" {}
+variable "apps" {}

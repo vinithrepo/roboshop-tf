@@ -122,7 +122,7 @@ module "app" {
   zone_id = var.zone_id
   shh_ingress_cidr = var.shh_ingress_cidr
 
-  for_each = "apps"
+  for_each = var.apps
 
   component = each.key
   port = each.value["port"]
