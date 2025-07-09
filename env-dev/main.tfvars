@@ -89,7 +89,8 @@ rabbitmq = {
     instance_type = "t3.small"
   }
 }
-apps = {
+
+apps  = {
   frontend = {
     instance_type = "t3.small"
   }
