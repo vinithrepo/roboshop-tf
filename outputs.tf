@@ -4,6 +4,6 @@
 #output "vpc" {
 #  value = data.aws_subnets.subnets.ids
 #}
-output "alb" {
+output "alb_main" {
   value = module.alb
 }
