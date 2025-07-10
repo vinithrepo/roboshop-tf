@@ -136,7 +136,7 @@ module "app" {
   subnet_ids              = local.app_subnets
   vpc_id                  = local.vpc_id
   alb_name  = lookup(lookup(lookup(module.alb, "private",  null), "alb", null), "dns_name", null)
-  listener  = lookup(lookup(lookup(module.alb, "private",  null), "alb", null), "listener", null), "arn" , null)
+  listener  = lookup(lookup(module.alb, "private",  null), "listener", null), "arn" , null)
 }
 
 
