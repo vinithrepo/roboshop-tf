@@ -45,10 +45,10 @@ module "docdb" {
   skip_final_snapshot     = each.value["skip_final_snapshot"]
   sg_ingress_cidr         = local.app_subnets_cidr
   vpc_id                  = local.vpc_id
-  engine_version = each.value["engine_version"]
-  engine_family = each.value["engine_family"]
-  instance_count = each.value["instance_count"]
-  instance_class = each.value["instance_class"]
+  engine_version          = each.value["engine_version"]
+  engine_family           = each.value["engine_family"]
+  instance_count          = each.value["instance_count"]
+  instance_class          = each.value["instance_class"]
 }
 
 module "rds" {
@@ -63,16 +63,16 @@ module "rds" {
   subnet_ids              = local.db_subnets
   sg_ingress_cidr         = local.app_subnets_cidr
   vpc_id                  = local.vpc_id
-  rds_type  = each.value["rds_type"]
-  db_port  = each.value["db_port"]
-  engine_family  = each.value["engine_family"]
-  engine  = each.value["engine"]
-  engine_version  = each.value["engine_version"]
-  backup_retention_period  = each.value["backup_retention_period"]
-  preferred_backup_window  = each.value["preferred_backup_window"]
-  skip_final_snapshot   = each.value["skip_final_snapshot"]
-  instance_class = each.value["instance_class"]
-  instance_count = each.value["instance_count"]
+  rds_type                = each.value["rds_type"]
+  db_port                 = each.value["db_port"]
+  engine_family           = each.value["engine_family"]
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  skip_final_snapshot     = each.value["skip_final_snapshot"]
+  instance_class          = each.value["instance_class"]
+  instance_count          = each.value["instance_count"]
 
 }
 module "elasticache" {
@@ -84,16 +84,16 @@ module "elasticache" {
 
   for_each = var.elasticache
 
-  subnet_ids              = local.db_subnets
-  sg_ingress_cidr         = local.app_subnets_cidr
-  vpc_id                  = local.vpc_id
+  subnet_ids       = local.db_subnets
+  sg_ingress_cidr  = local.app_subnets_cidr
+  vpc_id           = local.vpc_id
   elasticache_type = each.value["elasticache_type"]
-  port = each.value["port"]
-  family = each.value["family"]
-  engine = each.value["engine"]
-  node_type = each.value["node_type"]
-  num_cache_nodes = each.value["num_cache_nodes"]
-  engine_version = each.value["engine_version"]
+  port             = each.value["port"]
+  family           = each.value["family"]
+  engine           = each.value["engine"]
+  node_type        = each.value["node_type"]
+  num_cache_nodes  = each.value["num_cache_nodes"]
+  engine_version   = each.value["engine_version"]
 
 }
 module "rabbitmq" {
@@ -106,11 +106,11 @@ module "rabbitmq" {
 
   for_each = var.rabbitmq
 
-  subnet_ids              = local.db_subnets
-  sg_ingress_cidr         = local.app_subnets_cidr
-  vpc_id                  = local.vpc_id
+  subnet_ids       = local.db_subnets
+  sg_ingress_cidr  = local.app_subnets_cidr
+  vpc_id           = local.vpc_id
   shh_ingress_cidr = var.shh_ingress_cidr
-  instance_type = each.value["instance_type"]
+  instance_type    = each.value["instance_type"]
 
 }
 
@@ -118,29 +118,29 @@ module "app" {
 
   source = "git::https://github.com/vinithrepo/tf-module-app.git"
 
-  tags = var.tags
-  env  = var.env
-  zone_id = var.zone_id
+  tags             = var.tags
+  env              = var.env
+  zone_id          = var.zone_id
   shh_ingress_cidr = var.shh_ingress_cidr
   default_vpc_id   = var.default_vpc_id
 
   for_each = var.apps
 
-  component = each.key
-  port = each.value["port"]
-  instance_type = each.value["instance_type"]
-  desired_capacity   = each.value["desired_capacity"]
-  max_size           = each.value["max_size"]
-  min_size           = each.value["min_size"]
-  lb_priority        = each.value["lb_priority"]
+  component        = each.key
+  port             = each.value["port"]
+  instance_type    = each.value["instance_type"]
+  desired_capacity = each.value["desired_capacity"]
+  max_size         = each.value["max_size"]
+  min_size         = each.value["min_size"]
+  lb_priority      = each.value["lb_priority"]
 
-  sg_ingress_cidr         = local.app_subnets_cidr
-  subnet_ids              = local.app_subnets
-  vpc_id                  = local.vpc_id
-  private_alb_name  = lookup(lookup(lookup(module.alb, "private",  null), "alb", null), "dns_name", null)
-  private_listener  = lookup(lookup(lookup(module.alb, "private",  null), "listener", null), "arn" , null)
-  public_alb_name  = lookup(lookup(lookup(module.alb, "public",  null), "alb", null), "dns_name", null)
-  public_listener  = lookup(lookup(lookup(module.alb, "public",  null), "listener", null), "arn" , null)
+  sg_ingress_cidr  = local.app_subnets_cidr
+  subnet_ids       = local.app_subnets
+  vpc_id           = local.vpc_id
+  private_alb_name = lookup(lookup(lookup(module.alb, "private", null), "alb", null), "dns_name", null)
+  private_listener = lookup(lookup(lookup(module.alb, "private", null), "listener", null), "arn", null)
+  public_alb_name  = lookup(lookup(lookup(module.alb, "public", null), "alb", null), "dns_name", null)
+  public_listener  = lookup(lookup(lookup(module.alb, "public", null), "listener", null), "arn", null)
 }
 
 
