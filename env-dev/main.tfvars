@@ -98,7 +98,7 @@ apps = {
     max_size         = 3
     min_size         = 1
     lb_priority      = 1
-
+    parameters       = []
   }
   catalogue = {
     instance_type    = "t3.small"
@@ -107,6 +107,7 @@ apps = {
     max_size         = 3
     min_size         = 1
     lb_priority      = 2
+    parameters       = ["docdb"]
 
   }
   cart = {
@@ -116,7 +117,7 @@ apps = {
     max_size         = 3
     min_size         = 1
     lb_priority      = 3
-
+    parameters       = []
   }
   user = {
     instance_type    = "t3.small"
@@ -125,7 +126,7 @@ apps = {
     max_size         = 3
     min_size         = 1
     lb_priority      = 4
-
+    parameters       = ["docdb"]
   }
   payment = {
     instance_type    = "t3.small"
@@ -134,7 +135,7 @@ apps = {
     max_size         = 3
     min_size         = 1
     lb_priority      = 5
-
+    parameters       = []
   }
   shipping = {
     instance_type    = "t3.small"
@@ -143,6 +144,7 @@ apps = {
     max_size         = 3
     min_size         = 1
     lb_priority      = 6
+    parameters       = []
 
   }
 }
