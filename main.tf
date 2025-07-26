@@ -115,7 +115,7 @@ module "rabbitmq" {
 }
 
 module "app" {
-
+  depends_on = [ module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
   source = "git::https://github.com/vinithrepo/tf-module-app.git"
 
   tags             = var.tags
